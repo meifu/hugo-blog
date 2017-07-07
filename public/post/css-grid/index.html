@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+
+<!-- 
+Strata by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>學習 CSS grid &middot; Meifu Kuo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Meifu&#39;s Murmur">
+		<meta name="description" content="murmuring...">
+		<meta http-equiv="content-language" content="en-us" />
+
+		
+		<meta name="og:site_name" content="Meifu Kuo">
+		<meta name="og:title" content="學習 CSS grid">
+		<meta name="og:url" content="https://meifu.github.io/post/css-grid/">
+		<meta name="og:image" content="https://meifu.github.io/images/logo_old.png">
+		
+
+		<meta name="generator" content="Hugo 0.23" />
+
+		<!--[if lte IE 8]><script src='https://meifu.github.io/js/ie/html5shiv.js'></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://meifu.github.io/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="https://meifu.github.io//css/ie8.css"><![endif]-->
+
+		
+		
+	</head>
+
+	<body id="top">
+		<!-- Header -->
+<header id="header">
+	<a href="https://meifu.github.io/" class="image avatar"><img src="https://meifu.github.io/images/logo_old.png" alt="" /></a>
+	
+		<h1><strong>I&rsquo;m Meifu Kuo</strong>,<br> a frontend Developer, <br>a music lover, and<br>a mom &hearts;.</h1>
+	
+
+	
+		<nav id="sidebar">
+			<ul>
+			
+				<li><a href="https://meifu.github.io/post/">Blog</a></li>
+			
+				<li><a href="https://meifu.github.io/">Home</a></li>
+			
+			</ul>
+		</nav>
+	
+</header>
+
+
+		<!-- Main -->
+		<div id="main">
+			
+	<span>
+		<h1>學習 CSS grid</h1>
+
+		<i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2017-06-23 09:02:41 &#43;0800 CST">2017-06-23</time>&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://meifu.github.io/categories/css">css</a>
+        
+        
+    
+
+
+
+   
+   
+
+
+	</span>
+
+	<p>
+	    
+
+<p>先筆記一下喔</p>
+
+<h3 id="for-parent-element">for parent element:</h3>
+
+<p><code>display: grid;</code></p>
+
+<p><code>grid-template-columns: 20% 20% 20% 20% 20%</code></p>
+
+<p>也可以用 <code>repeat(5, 20%);</code>
+新的單位 <code>fr = fraction</code></p>
+
+<p><code>grid-template-rows</code> 同上</p>
+
+<p><code>grid-template:</code> shorthand for grid-template-columns and grid-template-rows</p>
+
+<p>ex: <code>grid-template: 1fr 50px / 20% 80%;</code></p>
+
+<h3 id="for-child-element">for child element:</h3>
+
+<p><code>grid-column-start</code>, <code>grid-row-start</code></p>
+
+<p>可以放正數、負數、或 span 數字</p>
+
+<p><code>grid-column-end</code>, <code>grid-row-end</code></p>
+
+<p>可以放正數、負數、或 span 數字，end 的那格是不包含的</p>
+
+<p>**奇怪的地方</p>
+
+<p>如果共有五格，要填2,3,4，可以：(end值小於start值)</p>
+
+<pre><code>grid-column-start: 5;
+grid-column-end: 2;
+</code></pre>
+
+<p>**用負數</p>
+
+<p>如果共有五格，要填1,2,3,4，可以：</p>
+
+<pre><code>grid-column-start: 1;
+grid-column-end: -2;
+</code></pre>
+
+<p>如果是負值，-1好像沒東西？-2開始跑到右邊&hellip;</p>
+
+<p><code>grid-template-start</code> 跟 <code>grid-template-end</code> 到回去數會不一樣，差1</p>
+
+<p><code>grid-column</code>: shorthand for grid-column-start and grid-column-end</p>
+
+<p>ex: 3 / 5</p>
+
+<p><code>grid-row</code>: shorthand for grid-row-start and grid-row-end</p>
+
+<p>ex: 1 / 5</p>
+
+<p><code>grid-area</code>: shorthand for above</p>
+
+<p>grid-row-start / grid-column-start / grid-row-end / grid-column-end</p>
+
+<p><code>order</code>:類似z-index</p>
+
+<p>這篇文章不錯唷
+[<a href="https://stripe.com/blog/connect-front-end-experience">https://stripe.com/blog/connect-front-end-experience</a>]</p>
+
+<p>references:</p>
+
+<ul>
+<li><p>[<a href="http://cssgridgarden.com/">http://cssgridgarden.com/</a>]</p></li>
+
+<li><p>[<a href="https://stripe.com/blog/connect-front-end-experience">https://stripe.com/blog/connect-front-end-experience</a>]</p></li>
+</ul>
+
+	</p>
+
+	
+
+		</div>
+
+		<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		
+		
+		
+		<li><a href="//twitter.com/meifu" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+		
+		
+		<li><a href="//github.com/meifu" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		
+		
+		<li><a href="//gitlab.com/meifutoolate" target="_blank" class="icon fa-gitlab"><span class="label">GitLab</span></a></li>
+		
+		
+		<li><a href="meifukuo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		
+		
+		
+		
+		<li><a href="https://meifu.github.io/#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		
+		
+		<li><a href="https://meifu.github.io/index.xml" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		
+	</ul>
+
+	<ul class="copyright">
+		
+		<li>&copy; Meifu Kuo</li>
+		
+		<li>Design: <a href="//html5up.net">HTML5 UP</a></li>
+		
+		<li>Demo Images: <a href="//unsplash.com/">Unsplash</a></li>
+		
+	</ul>
+</footer>
+
+<!-- Scripts -->
+<script src="https://meifu.github.io/js/jquery.min.js"></script>
+<script src="https://meifu.github.io/js/jquery.poptrox.min.js"></script>
+<script src="https://meifu.github.io/js/skel.min.js"></script>
+<script src="https://meifu.github.io/js/util.js"></script>
+
+<script src="https://meifu.github.io/js/main.js"></script>
+
+
+
+
+
+	</body>
+</html>

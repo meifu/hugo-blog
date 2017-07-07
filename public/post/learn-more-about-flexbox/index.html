@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+
+<!-- 
+Strata by HTML5 UP
+html5up.net | @n33co
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>learn more about flexbox &middot; Meifu Kuo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Meifu&#39;s Murmur">
+		<meta name="description" content="murmuring...">
+		<meta http-equiv="content-language" content="en-us" />
+
+		
+		<meta name="og:site_name" content="Meifu Kuo">
+		<meta name="og:title" content="learn more about flexbox">
+		<meta name="og:url" content="https://meifu.github.io/post/learn-more-about-flexbox/">
+		<meta name="og:image" content="https://meifu.github.io/images/logo_old.png">
+		
+
+		<meta name="generator" content="Hugo 0.23" />
+
+		<!--[if lte IE 8]><script src='https://meifu.github.io/js/ie/html5shiv.js'></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://meifu.github.io/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="https://meifu.github.io//css/ie8.css"><![endif]-->
+
+		
+		
+	</head>
+
+	<body id="top">
+		<!-- Header -->
+<header id="header">
+	<a href="https://meifu.github.io/" class="image avatar"><img src="https://meifu.github.io/images/logo_old.png" alt="" /></a>
+	
+		<h1><strong>I&rsquo;m Meifu Kuo</strong>,<br> a frontend Developer, <br>a music lover, and<br>a mom &hearts;.</h1>
+	
+
+	
+		<nav id="sidebar">
+			<ul>
+			
+				<li><a href="https://meifu.github.io/post/">Blog</a></li>
+			
+				<li><a href="https://meifu.github.io/">Home</a></li>
+			
+			</ul>
+		</nav>
+	
+</header>
+
+
+		<!-- Main -->
+		<div id="main">
+			
+	<span>
+		<h1>learn more about flexbox</h1>
+
+		<i class="fa fa-calendar"></i>&nbsp;&nbsp;
+<time datetime="2017-06-21 12:35:43 &#43;0800 CST">2017-06-21</time>&nbsp;&nbsp;
+
+
+    
+    
+        <i class="fa fa-folder"></i>&nbsp;&nbsp;
+        
+        <a class="article-category-link" href="https://meifu.github.io/categories/css">css</a>
+        
+        
+    
+
+
+
+   
+   
+
+
+	</span>
+
+	<p>
+	    
+
+<p>好像真的看完就忘記了，所以就試著打一篇筆記看看吧～</p>
+
+<p>主要是有關flexbox在使用的時候，好像不是那麼會控制裡面的東西，看了這篇文章：
+[<a href="https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b">https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b</a>]</p>
+
+<p>覺得很值得學習！</p>
+
+<h2 id="1-margins-有特殊能力">1.Margins 有特殊能力</h2>
+
+<p>看了他的第一個範例，我就發現我很少用到flex這個屬性，應該要常用XD</p>
+
+<p>至於 margin 的功用，就是讓某個child element 不延伸寬度而自然而然地待在右邊或左邊（可以這樣說嗎？）</p>
+
+<h2 id="2-min-width-是重要的">2.min-width 是重要的</h2>
+
+<p>這個主要應該是說 child element 的 min-width 屬性 default 是 auto</p>
+
+<p>碰到像他範例中有一邊的文字過長時，可以將 min-width 設成 0，來保持另外一邊的 child element 不被擠出去</p>
+
+<h2 id="3-flex-縮寫">3.flex 縮寫</h2>
+
+<p>flex: initial 等於</p>
+
+<blockquote>
+<p>If I want an item to squish in a bit if there isn’t enough room, but not to stretch any wider than it needs to: flex: 0 1 auto</p>
+</blockquote>
+
+<p>flex: auto</p>
+
+<blockquote>
+<p>If my flex item should stretch to fill the available space and squish in a bit if there’s not enough room: flex: 1 1 auto</p>
+</blockquote>
+
+<p>flex: none</p>
+
+<blockquote>
+<p>If my item should not flex at all: flex: 0 0 auto</p>
+</blockquote>
+
+<h2 id="4-inline-flex">4.inline-flex</h2>
+
+<p>就是 inline 的 flexbox?</p>
+
+<h2 id="5-在flex-item上-vertical-align-沒有作用">5.在flex-item上 vertical-align 沒有作用</h2>
+
+<h2 id="6-不要用-margins-或-padding">6.不要用 % margins 或 padding</h2>
+
+<h2 id="7-鄰近的flex-item-的-margins-不會-collapse">7.鄰近的flex item 的 margins 不會 collapse</h2>
+
+<h2 id="8-z-index-works">8.z-index works</h2>
+
+<h2 id="9-flex-basis-很微妙">9.flex-basis 很微妙</h2>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*eiAn12jGzun4F7U3mfqUtQ.png"></p>
+
+<h2 id="10-align-items-baseline">10.align-items: baseline</h2>
+
+<p>可以用喔～</p>
+
+<p>文末還提供一個連結 是用來 紀錄目前flexbox 的bugs的！
+[<a href="https://github.com/philipwalton/flexbugs">https://github.com/philipwalton/flexbugs</a>]</p>
+
+<p>趕快多用flexbox吧！</p>
+
+	</p>
+
+	
+
+		</div>
+
+		<!-- Footer -->
+<footer id="footer">
+	<ul class="icons">
+		
+		
+		
+		<li><a href="//twitter.com/meifu" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+		
+		
+		<li><a href="//github.com/meifu" target="_blank" class="icon fa-github"><span class="label">GitHub</span></a></li>
+		
+		
+		<li><a href="//gitlab.com/meifutoolate" target="_blank" class="icon fa-gitlab"><span class="label">GitLab</span></a></li>
+		
+		
+		<li><a href="meifukuo" target="_blank" class="icon fa-linkedin-square"><span class="label">Linkedin</span></a></li>
+		
+		
+		
+		
+		<li><a href="https://meifu.github.io/#contact-form" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+		
+		
+		<li><a href="https://meifu.github.io/index.xml" class="icon fa-rss" type="application/rss+xml"><span class="label">RSS</span></a></li>
+		
+	</ul>
+
+	<ul class="copyright">
+		
+		<li>&copy; Meifu Kuo</li>
+		
+		<li>Design: <a href="//html5up.net">HTML5 UP</a></li>
+		
+		<li>Demo Images: <a href="//unsplash.com/">Unsplash</a></li>
+		
+	</ul>
+</footer>
+
+<!-- Scripts -->
+<script src="https://meifu.github.io/js/jquery.min.js"></script>
+<script src="https://meifu.github.io/js/jquery.poptrox.min.js"></script>
+<script src="https://meifu.github.io/js/skel.min.js"></script>
+<script src="https://meifu.github.io/js/util.js"></script>
+
+<script src="https://meifu.github.io/js/main.js"></script>
+
+
+
+
+
+	</body>
+</html>

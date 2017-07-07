@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on Meifu Kuo</title>
+    <link>https://meifu.github.io/categories/css/</link>
+    <description>Recent content in Css on Meifu Kuo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Jul 2017 14:15:13 +0800</lastBuildDate>
+    
+	<atom:link href="https://meifu.github.io/categories/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vertical padding to control aspect ratios</title>
+      <link>https://meifu.github.io/post/vertical-padding-to-control-aspect-ratios/</link>
+      <pubDate>Thu, 06 Jul 2017 14:15:13 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/vertical-padding-to-control-aspect-ratios/</guid>
+      <description>之前在找怎樣讓youtube的iframe自動滿版、responsive的時候，看到的解法是：
+ html  &amp;lt;div class=&amp;quot;wrap&amp;quot;&amp;gt; &amp;lt;iframe /&amp;gt; &amp;lt;/div&amp;gt;   css(for 16:9)  .wrap { position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0 } iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }  但我都不懂是為什麼，後來看到這篇文章Aspect Ratios in CSS are a Hack
+終於&amp;hellip;..
+還是不太懂XD，為了寫這篇文章，再認真的看了一下&amp;hellip;
+.
+.
+.
+我懂了！！！！！（其實也沒什麼）
+其實就是用外層的padding-top或是padding-bottom來撐出高度，而高度又是根據width的百分比來訂。
+that&amp;rsquo;s it
+收工
+Reference:
+css-trick</description>
+    </item>
+    
+    <item>
+      <title>學習 CSS grid</title>
+      <link>https://meifu.github.io/post/css-grid/</link>
+      <pubDate>Fri, 23 Jun 2017 09:02:41 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/css-grid/</guid>
+      <description>先筆記一下喔
+for parent element: display: grid;
+grid-template-columns: 20% 20% 20% 20% 20%
+也可以用 repeat(5, 20%); 新的單位 fr = fraction
+grid-template-rows 同上
+grid-template: shorthand for grid-template-columns and grid-template-rows
+ex: grid-template: 1fr 50px / 20% 80%;
+for child element: grid-column-start, grid-row-start
+可以放正數、負數、或 span 數字
+grid-column-end, grid-row-end
+可以放正數、負數、或 span 數字，end 的那格是不包含的
+**奇怪的地方
+如果共有五格，要填2,3,4，可以：(end值小於start值)
+grid-column-start: 5; grid-column-end: 2;  **用負數
+如果共有五格，要填1,2,3,4，可以：
+grid-column-start: 1; grid-column-end: -2;  如果是負值，-1好像沒東西？-2開始跑到右邊&amp;hellip;
+grid-template-start 跟 grid-template-end 到回去數會不一樣，差1
+grid-column: shorthand for grid-column-start and grid-column-end</description>
+    </item>
+    
+    <item>
+      <title>hello css variables</title>
+      <link>https://meifu.github.io/post/hello-css-variables/</link>
+      <pubDate>Thu, 22 Jun 2017 10:12:52 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/hello-css-variables/</guid>
+      <description>最近好像有很多文章在講css variables，應該真的可以開始用了吧？ 今天再找了一些文章才發現，他早就出來啦&amp;hellip;我又lag&amp;hellip;趕快來試試
+:root { --font-size-1: 1em; --font-size-2: 1.2em; --font-size-3: 1.44rem; --font-size-4: 1.728rem; --font-size-5: 2.074rem; --font-size-6: 2.488rem; } @media screen and (min-width: 800px) { :root { --font-size-1: 1rem; --font-size-2: 1.333rem; --font-size-3: 1.777rem; .... } } h1 { font-size: var(--font-size-6); } h2 { font-size: var(--font-size-5); } ...  也可以
+:root { --bg-color: #fff; } p { --bg-color: #333; } h3 { --bg-color: #aaa; }  這樣有點像是有scope的變數，跟javascript 的 let 一樣
+Seperate logic from design .</description>
+    </item>
+    
+    <item>
+      <title>learn more about flexbox</title>
+      <link>https://meifu.github.io/post/learn-more-about-flexbox/</link>
+      <pubDate>Wed, 21 Jun 2017 12:35:43 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/learn-more-about-flexbox/</guid>
+      <description>好像真的看完就忘記了，所以就試著打一篇筆記看看吧～
+主要是有關flexbox在使用的時候，好像不是那麼會控制裡面的東西，看了這篇文章： [https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b]
+覺得很值得學習！
+1.Margins 有特殊能力 看了他的第一個範例，我就發現我很少用到flex這個屬性，應該要常用XD
+至於 margin 的功用，就是讓某個child element 不延伸寬度而自然而然地待在右邊或左邊（可以這樣說嗎？）
+2.min-width 是重要的 這個主要應該是說 child element 的 min-width 屬性 default 是 auto
+碰到像他範例中有一邊的文字過長時，可以將 min-width 設成 0，來保持另外一邊的 child element 不被擠出去
+3.flex 縮寫 flex: initial 等於
+ If I want an item to squish in a bit if there isn’t enough room, but not to stretch any wider than it needs to: flex: 0 1 auto
+ flex: auto
+ If my flex item should stretch to fill the available space and squish in a bit if there’s not enough room: flex: 1 1 auto</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meifu Kuo</title>
+    <link>https://meifu.github.io/</link>
+    <description>Recent content on Meifu Kuo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Jul 2017 15:25:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://meifu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello Hugo!</title>
+      <link>https://meifu.github.io/post/hello-hugo/</link>
+      <pubDate>Thu, 06 Jul 2017 15:25:24 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/hello-hugo/</guid>
+      <description>I decide to try Hugo for my blog. I will write some learning notes and some murmur. I use this theme: [https://github.com/digitalcraftsman/hugo-strata-theme]
+and &amp;hellip;
+Amazing!
+this is sooooo cool!!!!</description>
+    </item>
+    
+    <item>
+      <title>Vertical padding to control aspect ratios</title>
+      <link>https://meifu.github.io/post/vertical-padding-to-control-aspect-ratios/</link>
+      <pubDate>Thu, 06 Jul 2017 14:15:13 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/vertical-padding-to-control-aspect-ratios/</guid>
+      <description>之前在找怎樣讓youtube的iframe自動滿版、responsive的時候，看到的解法是：
+ html  &amp;lt;div class=&amp;quot;wrap&amp;quot;&amp;gt; &amp;lt;iframe /&amp;gt; &amp;lt;/div&amp;gt;   css(for 16:9)  .wrap { position: relative; padding-bottom: 56.25%; padding-top: 25px; height: 0 } iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }  但我都不懂是為什麼，後來看到這篇文章Aspect Ratios in CSS are a Hack
+終於&amp;hellip;..
+還是不太懂XD，為了寫這篇文章，再認真的看了一下&amp;hellip;
+.
+.
+.
+我懂了！！！！！（其實也沒什麼）
+其實就是用外層的padding-top或是padding-bottom來撐出高度，而高度又是根據width的百分比來訂。
+that&amp;rsquo;s it
+收工
+Reference:
+css-trick</description>
+    </item>
+    
+    <item>
+      <title>javascript reduce</title>
+      <link>https://meifu.github.io/post/javascript-reduce/</link>
+      <pubDate>Thu, 06 Jul 2017 09:13:08 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/javascript-reduce/</guid>
+      <description>javascript reduce 是一個很神奇的function，也讓我有點難懂&amp;hellip;
+最近剛好在看這篇文章，裡面有一段用到了reduce瞬間讓我滿滿????????
+需要研究一下
+reduce主要是用在array上，他的第一個parameter是一個function()，第二個parameter是optional的，是一個index值，代表初始值
+reduce是一個累加的感覺，它將array中的每個值，依序帶入第一個parameter的function中，再將這個function return的結果累加起來。
+而這個function可以帶入四個parameters：accumulator、currentValue、currentIndex、array，可以看Mozilla文件的說明 accumulator就是把array的上一個值帶入function的結果(return value)。
+它可以用來將一些多層的array平面化，像是：
+const flatten = arr =&amp;gt; arr.reduce( (acc, val) =&amp;gt; acc.concat( Array.isArray(val) ? flatten(val) : val ), [] );  可以用來計算不同名字出現的次數：
+var names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Tiff&#39;, &#39;Bruce&#39;, &#39;Alice&#39;]; var countedNames = names.reduce(function (allNames, name) { if (name in allNames) { allNames[name]++; } else { allNames[name] = 1; } return allNames; }, {}); // countedNames is: // { &#39;Alice&#39;: 2, &#39;Bob&#39;: 1, &#39;Tiff&#39;: 1, &#39;Bruce&#39;: 1 }  若沒有提供initial value，會用array的第一個元素值當作accumulator，會用array的第二個元素值當currentValue，也就是不會從array的第一個值開始跑喔。建議是要提供initial value，不然可能會有不同結果。</description>
+    </item>
+    
+    <item>
+      <title>html template tag</title>
+      <link>https://meifu.github.io/post/html-template-tag/</link>
+      <pubDate>Wed, 05 Jul 2017 10:13:12 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/html-template-tag/</guid>
+      <description>最近才發現有&amp;lt;template&amp;gt;這個 html tag 可以用&amp;hellip;
+看了Mozilla的template文件 記錄一下學到了什麼。
+顧名思義它就是template，他裡面放的就是一般的html，取用裡面的物件跟設定內容的方式也跟其他html很像。
+可以用 var t = document.querySelector(&#39;#id&#39;) 來取到某個template
+我們可以用 t.content 來取得這個template的content
+在t.content裡面設定物件內容 似乎跟一般的html一樣，像是用 textContent
+主要是要把塞完內容的template放到dom裡面，是要用到importNode：
+var clone = document.importNode(t.content, true); tb.appendChild(clone);  有個好處是可以重複使用，像是範例中的 var td 是指 template裡面的td
+這個td在第一次塞完值之後，還可以繼續使用來塞第二次的值，
+畢竟，他就是一個樣板啊～
+目前看起來只有IE沒有support?
+但是&amp;hellip;
+我覺得vue.js的template厲害太多了，不如就用vue吧！XD</description>
+    </item>
+    
+    <item>
+      <title>json object order</title>
+      <link>https://meifu.github.io/post/json-object-order/</link>
+      <pubDate>Fri, 30 Jun 2017 16:44:49 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/json-object-order/</guid>
+      <description>&amp;ldquo;An object is an unordered set of name/value pairs&amp;rdquo;
+ 亂翻譯：object是一堆『沒有順序』的「名稱/值」
+重點是『沒有順序』，而我發現用 for (xxx in object)
+去取出來用的時候，他會自動用某個順序去取，不會用你製造這個object的時候的順序。
+為什麼會突然體認到這件事呢？是這樣的：
+在做商品頁的時候，我們要先判斷各個顏色的商品圖是否存在，判斷完再把存在的圖放進dom裡面。
+我判斷圖片存在與否後，就先把存在的圖片跟對應顏色重新整理成一個新的object，再用這個新的object去產生出對應的html。
+由於每一個顏色會對應到一組圖片，在某個專案中被發現是對應錯誤的（bug!!）。
+去檢查之後發現，是在用 for (xx in Object) 取出資料 render html 的時候，順序跟原本的不同，結果就對應錯了。
+簡單的測試：
+testobj[&#39;B&#39;] = [&#39;B1&#39;,&#39;B2&#39;,&#39;B3&#39;]; testobj[&#39;A&#39;] = [&#39;A2&#39;,&#39;A3&#39;,&#39;A1&#39;]; testobj[&#39;101&#39;] = [&#39;1011&#39;, &#39;1012&#39;]; testobj[&#39;75&#39;] = [&#39;751&#39;, &#39;752&#39;]; for (key in testobj) { console.log(&#39;test key: &#39; + key); }  會印出
+test key: 75 VM695:2 test key: 101 VM695:2 test key: B VM695:2 test key: A  也就是如果key值是數字，他取出的時候會以數字由小到大的順序！ 但如果key值是文字，則似乎不會被改變順序？</description>
+    </item>
+    
+    <item>
+      <title>認識 &#39;草東沒有派對&#39;</title>
+      <link>https://meifu.github.io/post/no-party-for-cao-dong/</link>
+      <pubDate>Mon, 26 Jun 2017 09:07:06 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/no-party-for-cao-dong/</guid>
+      <description>##「草東沒有派對」。
+以前年輕的時候有稍微在迷獨立音樂、台灣地下樂團那些的， 年紀大了加上有了小孩，這些根本就拋諸腦後，平常能亂聽些音樂就很好了。 前陣子spotify有個頻道是for 金曲獎入圍者的，好奇就來聽聽， 結果一聽，也還真的有些不錯的而且讓我很有興趣了解一下。
+其中，好像只有聽過名字但沒聽過歌的「草東沒有派對」，覺得被震撼到。 好像很久沒有這樣的感覺，內心被震動。 加上他們的幾句歌詞，又好像幫內在的痛苦找到了一個出口， 平常說不出來，覺得沒什麼好說的悶、憤怒跟哀傷，就藉由那旋律，爆炸了。
+我覺得這種音樂是偏向後搖滾類的，但很久沒follow音樂的派別，現在也許會有別種稱呼？ 也是有點像某些日系搖滾的調調（快節奏的部分）。
+我覺得超好聽的啊～但某人說還好，我才意識到對一般沒聽獨立音樂的人可能不太習慣吧。
+現在他們金曲獎得獎後應該會很多人知道了，覺得有點可惜，因為沒那麼酷了XD 希望他們還是會繼續保持他們的搖滾魂。
+幾首很好聽的、歌詞有共鳴的：
+爛泥
+我想要說的 前人們都說過了 我想要做的 有錢人都做過了 我想要的公平都是不公們虛構的 噢多麼乾淨的一幅畫 怎麼會 怎麼會 充滿了悲傷 噢多麼天真的一句話 怎麼會 怎麼會 像噩夢一樣  山海
+他明白 他明白 我給不起 於是轉身向山裡走去 他明白 他明白 我給不起 於是轉身向大海走去 我聽見那少年的聲音 在還有未來的過去 渴望著 美好結局 卻沒能成為自己  大風吹
+哭啊 喊啊 叫你媽媽帶你去買玩具啊 快 快拿到學校炫耀吧 孩子 交點朋友吧 哎呀呀 你看你手上拿的是什麼啊 那東西我們早就不屑啦 哈哈哈 哈  btw, 最近有看到一個名詞叫做「數字搖滾」，不知道是怎樣的，改天再來查。</description>
+    </item>
+    
+    <item>
+      <title>學習 CSS grid</title>
+      <link>https://meifu.github.io/post/css-grid/</link>
+      <pubDate>Fri, 23 Jun 2017 09:02:41 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/css-grid/</guid>
+      <description>先筆記一下喔
+for parent element: display: grid;
+grid-template-columns: 20% 20% 20% 20% 20%
+也可以用 repeat(5, 20%); 新的單位 fr = fraction
+grid-template-rows 同上
+grid-template: shorthand for grid-template-columns and grid-template-rows
+ex: grid-template: 1fr 50px / 20% 80%;
+for child element: grid-column-start, grid-row-start
+可以放正數、負數、或 span 數字
+grid-column-end, grid-row-end
+可以放正數、負數、或 span 數字，end 的那格是不包含的
+**奇怪的地方
+如果共有五格，要填2,3,4，可以：(end值小於start值)
+grid-column-start: 5; grid-column-end: 2;  **用負數
+如果共有五格，要填1,2,3,4，可以：
+grid-column-start: 1; grid-column-end: -2;  如果是負值，-1好像沒東西？-2開始跑到右邊&amp;hellip;
+grid-template-start 跟 grid-template-end 到回去數會不一樣，差1
+grid-column: shorthand for grid-column-start and grid-column-end</description>
+    </item>
+    
+    <item>
+      <title>hello css variables</title>
+      <link>https://meifu.github.io/post/hello-css-variables/</link>
+      <pubDate>Thu, 22 Jun 2017 10:12:52 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/hello-css-variables/</guid>
+      <description>最近好像有很多文章在講css variables，應該真的可以開始用了吧？ 今天再找了一些文章才發現，他早就出來啦&amp;hellip;我又lag&amp;hellip;趕快來試試
+:root { --font-size-1: 1em; --font-size-2: 1.2em; --font-size-3: 1.44rem; --font-size-4: 1.728rem; --font-size-5: 2.074rem; --font-size-6: 2.488rem; } @media screen and (min-width: 800px) { :root { --font-size-1: 1rem; --font-size-2: 1.333rem; --font-size-3: 1.777rem; .... } } h1 { font-size: var(--font-size-6); } h2 { font-size: var(--font-size-5); } ...  也可以
+:root { --bg-color: #fff; } p { --bg-color: #333; } h3 { --bg-color: #aaa; }  這樣有點像是有scope的變數，跟javascript 的 let 一樣
+Seperate logic from design .</description>
+    </item>
+    
+    <item>
+      <title>learn more about flexbox</title>
+      <link>https://meifu.github.io/post/learn-more-about-flexbox/</link>
+      <pubDate>Wed, 21 Jun 2017 12:35:43 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/learn-more-about-flexbox/</guid>
+      <description>好像真的看完就忘記了，所以就試著打一篇筆記看看吧～
+主要是有關flexbox在使用的時候，好像不是那麼會控制裡面的東西，看了這篇文章： [https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b]
+覺得很值得學習！
+1.Margins 有特殊能力 看了他的第一個範例，我就發現我很少用到flex這個屬性，應該要常用XD
+至於 margin 的功用，就是讓某個child element 不延伸寬度而自然而然地待在右邊或左邊（可以這樣說嗎？）
+2.min-width 是重要的 這個主要應該是說 child element 的 min-width 屬性 default 是 auto
+碰到像他範例中有一邊的文字過長時，可以將 min-width 設成 0，來保持另外一邊的 child element 不被擠出去
+3.flex 縮寫 flex: initial 等於
+ If I want an item to squish in a bit if there isn’t enough room, but not to stretch any wider than it needs to: flex: 0 1 auto
+ flex: auto
+ If my flex item should stretch to fill the available space and squish in a bit if there’s not enough room: flex: 1 1 auto</description>
+    </item>
+    
+  </channel>
+</rss>

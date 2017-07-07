@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Meifu Kuo</title>
+    <link>https://meifu.github.io/categories/javascript/</link>
+    <description>Recent content in Javascript on Meifu Kuo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Jul 2017 09:13:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://meifu.github.io/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>javascript reduce</title>
+      <link>https://meifu.github.io/post/javascript-reduce/</link>
+      <pubDate>Thu, 06 Jul 2017 09:13:08 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/javascript-reduce/</guid>
+      <description>javascript reduce 是一個很神奇的function，也讓我有點難懂&amp;hellip;
+最近剛好在看這篇文章，裡面有一段用到了reduce瞬間讓我滿滿????????
+需要研究一下
+reduce主要是用在array上，他的第一個parameter是一個function()，第二個parameter是optional的，是一個index值，代表初始值
+reduce是一個累加的感覺，它將array中的每個值，依序帶入第一個parameter的function中，再將這個function return的結果累加起來。
+而這個function可以帶入四個parameters：accumulator、currentValue、currentIndex、array，可以看Mozilla文件的說明 accumulator就是把array的上一個值帶入function的結果(return value)。
+它可以用來將一些多層的array平面化，像是：
+const flatten = arr =&amp;gt; arr.reduce( (acc, val) =&amp;gt; acc.concat( Array.isArray(val) ? flatten(val) : val ), [] );  可以用來計算不同名字出現的次數：
+var names = [&#39;Alice&#39;, &#39;Bob&#39;, &#39;Tiff&#39;, &#39;Bruce&#39;, &#39;Alice&#39;]; var countedNames = names.reduce(function (allNames, name) { if (name in allNames) { allNames[name]++; } else { allNames[name] = 1; } return allNames; }, {}); // countedNames is: // { &#39;Alice&#39;: 2, &#39;Bob&#39;: 1, &#39;Tiff&#39;: 1, &#39;Bruce&#39;: 1 }  若沒有提供initial value，會用array的第一個元素值當作accumulator，會用array的第二個元素值當currentValue，也就是不會從array的第一個值開始跑喔。建議是要提供initial value，不然可能會有不同結果。</description>
+    </item>
+    
+    <item>
+      <title>json object order</title>
+      <link>https://meifu.github.io/post/json-object-order/</link>
+      <pubDate>Fri, 30 Jun 2017 16:44:49 +0800</pubDate>
+      
+      <guid>https://meifu.github.io/post/json-object-order/</guid>
+      <description>&amp;ldquo;An object is an unordered set of name/value pairs&amp;rdquo;
+ 亂翻譯：object是一堆『沒有順序』的「名稱/值」
+重點是『沒有順序』，而我發現用 for (xxx in object)
+去取出來用的時候，他會自動用某個順序去取，不會用你製造這個object的時候的順序。
+為什麼會突然體認到這件事呢？是這樣的：
+在做商品頁的時候，我們要先判斷各個顏色的商品圖是否存在，判斷完再把存在的圖放進dom裡面。
+我判斷圖片存在與否後，就先把存在的圖片跟對應顏色重新整理成一個新的object，再用這個新的object去產生出對應的html。
+由於每一個顏色會對應到一組圖片，在某個專案中被發現是對應錯誤的（bug!!）。
+去檢查之後發現，是在用 for (xx in Object) 取出資料 render html 的時候，順序跟原本的不同，結果就對應錯了。
+簡單的測試：
+testobj[&#39;B&#39;] = [&#39;B1&#39;,&#39;B2&#39;,&#39;B3&#39;]; testobj[&#39;A&#39;] = [&#39;A2&#39;,&#39;A3&#39;,&#39;A1&#39;]; testobj[&#39;101&#39;] = [&#39;1011&#39;, &#39;1012&#39;]; testobj[&#39;75&#39;] = [&#39;751&#39;, &#39;752&#39;]; for (key in testobj) { console.log(&#39;test key: &#39; + key); }  會印出
+test key: 75 VM695:2 test key: 101 VM695:2 test key: B VM695:2 test key: A  也就是如果key值是數字，他取出的時候會以數字由小到大的順序！ 但如果key值是文字，則似乎不會被改變順序？</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://meifu.github.io/post/hello-hugo/</loc>
+    <lastmod>2017-07-06T15:25:24+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/vertical-padding-to-control-aspect-ratios/</loc>
+    <lastmod>2017-07-06T14:15:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/javascript-reduce/</loc>
+    <lastmod>2017-07-06T09:13:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/html-template-tag/</loc>
+    <lastmod>2017-07-05T10:13:12+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/json-object-order/</loc>
+    <lastmod>2017-06-30T16:44:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/no-party-for-cao-dong/</loc>
+    <lastmod>2017-06-26T09:07:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/css-grid/</loc>
+    <lastmod>2017-06-23T09:02:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/hello-css-variables/</loc>
+    <lastmod>2017-06-22T10:12:52+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/learn-more-about-flexbox/</loc>
+    <lastmod>2017-06-21T12:35:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/categories/css/</loc>
+    <lastmod>2017-07-06T14:15:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/categories/html/</loc>
+    <lastmod>2017-07-05T10:13:12+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/categories/javascript/</loc>
+    <lastmod>2017-07-06T09:13:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/</loc>
+    <lastmod>2017-07-06T15:25:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/categories/music/</loc>
+    <lastmod>2017-06-26T09:07:06+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/post/</loc>
+    <lastmod>2017-07-06T15:25:24+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://meifu.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
