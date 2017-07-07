@@ -46,8 +46,8 @@ paginate = 10
 
 	[params.about]
 		hide  = false
-		title = "Try to believe and prove that I can do something."
-		content = "After years of doubt about self, I guess I sholud start to do somethin, event what I can do is so small. At least I can try to share my thoughts."
+		title = "Try to believe that I can do something."
+		content = "After years of doubt about self, I guess I sholud start to do something, event what I can do is so subtle. At least I can try to share my thoughts."
 
 
 	[params.portfolio]
