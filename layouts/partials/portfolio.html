@@ -10,14 +10,7 @@
 		</article>
 		{{ end }}
 	</div>
-
-	{{ with .Site.Params.design.title }}
-	<h2>{{ . | markdownify }}</h2>{{ end }}
-	<div class="row">
-		{{ range .Site.Params.design.web }}
-		<article class="6u 12u$(xsmall) work-item">
-			<img src="{{ $.Site.BaseURL }}images/{{ .image }}" alt="" />
-		</article>
-		{{ end }}
-	</div>
+	
 </section>
+
+

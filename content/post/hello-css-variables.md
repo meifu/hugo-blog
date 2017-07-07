@@ -9,6 +9,8 @@ title = "hello css variables"
 最近好像有很多文章在講css variables，應該真的可以開始用了吧？
 今天再找了一些文章才發現，他早就出來啦...我又lag...趕快來試試
 
+<!--more-->
+
 	:root {
 		--font-size-1: 1em;
 		--font-size-2: 1.2em;

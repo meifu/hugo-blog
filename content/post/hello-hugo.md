@@ -7,6 +7,8 @@ title = "Hello Hugo!"
 
 I decide to try Hugo for my blog. I will write some learning notes and some murmur.
 I use this theme: 
+
+<!--more-->
 	[https://github.com/digitalcraftsman/hugo-strata-theme]
 
 and ...

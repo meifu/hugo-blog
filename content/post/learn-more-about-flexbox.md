@@ -11,6 +11,7 @@ title = "learn more about flexbox"
 主要是有關flexbox在使用的時候，好像不是那麼會控制裡面的東西，看了這篇文章：
 [https://hackernoon.com/11-things-i-learned-reading-the-flexbox-spec-5f0c799c776b]
 
+<!--more-->
 覺得很值得學習！
 
 ## 1.Margins 有特殊能力

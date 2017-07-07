@@ -8,7 +8,7 @@ title = "認識 '草東沒有派對'"
 
 <img src="https://d3i3hiotloyksv.cloudfront.net/uploads/artist/avatar/376/f61aefea-37c7-476f-82dc-1f7508d5930f.jpg" alt="草東沒有派對" width="100%";>
 
-
+<!--more-->
 ##「草東沒有派對」。
 
 

@@ -10,6 +10,8 @@ title = "html template tag"
 
 看了Mozilla的[template文件](https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/template) 記錄一下學到了什麼。
 
+<!--more-->
+
 顧名思義它就是template，他裡面放的就是一般的html，取用裡面的物件跟設定內容的方式也跟其他html很像。
 
 可以用 `var t = document.querySelector('#id')` 來取到某個template

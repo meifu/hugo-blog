@@ -12,6 +12,7 @@ javascript reduce 是一個很神奇的function，也讓我有點難懂...
 
 需要研究一下
 
+<!--more-->
 
 reduce主要是用在array上，他的第一個parameter是一個function()，第二個parameter是optional的，是一個index值，代表初始值
 

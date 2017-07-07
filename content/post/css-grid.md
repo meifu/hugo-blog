@@ -6,9 +6,11 @@ title = "學習 CSS grid"
 
 +++
 
-先筆記一下喔
+先筆記一下~
 
 ### for parent element:
+
+<!--more-->
 `display: grid;`
 
 `grid-template-columns: 20% 20% 20% 20% 20%`

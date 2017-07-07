@@ -10,6 +10,8 @@ title = "json object order"
 
 亂翻譯：object是一堆『沒有順序』的「名稱/值」
 
+<!--more-->
+
 重點是『沒有順序』，而我發現用 for (xxx in object) 
 
 去取出來用的時候，他會自動用某個順序去取，不會用你製造這個object的時候的順序。

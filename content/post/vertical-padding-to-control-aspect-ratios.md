@@ -9,6 +9,7 @@ title = "Vertical padding to control aspect ratios"
 之前在找怎樣讓youtube的iframe自動滿版、responsive的時候，看到的解法是：
 
 
+<!--more-->
 - html
 
 ```
