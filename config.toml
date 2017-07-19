@@ -2,7 +2,7 @@ baseurl = "https://meifu.github.io/"
 languageCode = "en-us"
 title = "Meifu Kuo"
 theme = "hugo-strata-theme"
-disqusShortname = ""
+disqusShortname = "meifu"
 # Enable Google Analytics by inserting your tracking code
 googleAnalytics = ""
 # Define how many posts should appear on a site
@@ -46,8 +46,8 @@ paginate = 10
 
 	[params.about]
 		hide  = false
-		title = "Try to believe that I can do something."
-		content = "After years of self-doubt, I guess I sholud start to do something. Even what I can do is so subtle... At least I can try to share my thoughts. Writing also can help me remember things better."
+		title = "Some nice things, some murmur."
+		content = "Make notes for learning. Write for expressing feelings."
 
 
 	[params.portfolio]

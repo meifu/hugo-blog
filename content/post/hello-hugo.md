@@ -33,7 +33,7 @@ this is sooooo cool!!!!
 
 接著用原本的repo把public資料夾做成一個submodule `git submodule add git@github.com:<username>/<username>.github.io.git public`
 
-然後再把全部東西push上去
+然後再把全部public裡面的東西push上去
 
 ```
 $ git add .
@@ -60,6 +60,7 @@ $ git push origin master
 
 `modified:    public (new commits, modified content, untracked content)`
 
+再進入public資料夾裡面run `git status` 則就會是一般的git訊息了，在這裡面就是一個自己的git環境，也就是一個submodule囉。
 
 
 
