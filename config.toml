@@ -2,9 +2,9 @@ baseurl = "https://meifu.github.io/"
 languageCode = "en-us"
 title = "Meifu Kuo"
 theme = "hugo-strata-theme"
-disqusShortname = "meifu"
+disqusShortname = "schwarzmeifu"
 # Enable Google Analytics by inserting your tracking code
-googleAnalytics = ""
+googleAnalytics = "UA-102907935-1"
 # Define how many posts should appear on a site
 paginate = 10
 
