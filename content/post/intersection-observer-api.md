@@ -81,5 +81,7 @@ var callback = function(entries, observer) {
 Reference:
 
 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+
 [IntersectionObserverEntry](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)
+
 [Connect: behind th front-end experience](https://stripe.com/blog/connect-front-end-experience)
