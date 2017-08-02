@@ -21,13 +21,17 @@ this is sooooo cool!!!!
 
 ## push to github page
 
-先是參考hugo document的做法，失敗。再看了github page官方的做法，了解他的意思但是好像少了什麼，因為我並不需要把整包檔案都push到git（因為會包含development的東西）
+先是參考hugo document的做法，失敗。再看了github page官方的做法，了解他的意思但是好像少了什麼，因為我並不需要把整包檔案都push到git（會包含development的東西）
 
 其實大概知道有個很單純的做法，就是移掉原本整個專案的git，只在hugo compile出來的public檔案夾那邊做git，然後把這包按照github page官方網站的做法push上去。但是，這樣真正應該要git的部分，也就是開發環境，反而沒有version control；又或者是要手動將要deploy的資料夾搬出去另外git，這樣感覺也不對。
 
 後來又去google，試來試去終於研究到一個用git submodule的方式，成功deploy到github page了。參考的是這篇：
 
 [Deploy a hug site to github page](https://github.com/whipperstacker/blog/blob/master/content/post/deploying-a-hugo-site-to-github-pages.md)
+
+假設原本的 git repository 是叫做 `blog` ，所有開發的檔案放在這邊。
+
+再來還要有一個空的 repository 是要做 github page的，假設就是 `<username>/<username>.github.io.git`。
 
 首先把public資料夾從原本的git移除 `git rm -r public`
 
@@ -52,7 +56,7 @@ $ git push origin master
 
 簡單來說就是在public這個submodule裡面再做一次git push
 
-好像就可以以囉！
+好像就可以囉！
 
 然後我就發現每次有新增或修改，跑`git status`的時候，顯示的訊息看起來怪怪的，
 
