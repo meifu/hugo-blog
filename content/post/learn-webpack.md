@@ -197,16 +197,34 @@ output: {
 
 
 
-### code spliting
+### code spliting(basic)
 
 一開始講師解釋了一下為何要做code spliting，舉例來說，通常登入頁面跟dashboard頁面所需要的javascript會差很多，dashboard需要用到較多的javascript，但login只需要很少的javascript。
 
-我們當然都希望user可以越快看到畫面越好，也就是可以load越少的javascript越好，所以希望在login的時候，就不要跑全部的javascript，只跑基本的部分就好。
+我們當然都希望user可以越快看到畫面越好，也就是可以load越少的javascript越好，所以希望在login的時候，就不要跑全部的javascript，只跑基本的部分就好。這時候就需要將javascript整理成不同部分了。
 
-這時候就需要將javascript整理成不同部分了。
 
+在一開始load的index.js裡面，安排額外的js進入的時機（例如點一個按鈕），而進入的寫法是用`System.import`:
 
 ```
+System.import('./image_viewer').then(module => {
+	console.log(module);
+	module.default();
+})
+```
+這樣網頁一開始就只會load index.js，點了按鈕才會再load image_viewer.js。主要就是靠`System.import`來另外載入js
+
+
+### multiple bundle (bundle is to big! -> vendor caching)
+
+再來是提到cache的功能，簡單來說，為了讓網站變快，所以有些已經載入過，而且沒有發生改變的js，我們希望他們是被cache住的。但是有些js是經常被改變的，我們不希望被cache住，因次就要將這兩種js分開bundle，而用webpack是可以輕易做到的：
+
+```
+const VENDOR_LIBS = [
+	'react', 'faker', 'lodash', 'redux', 'react-redux', 'react-dom', 'react-input-range', 'redux-form', 'redux-thunk'
+];
+...
+...
 entry: {
 	bundle: './src/index.js',
 	vendor: VENDOR_LIBS
@@ -216,16 +234,155 @@ output: {
 	filename: '[name].js'
 },
 ```
+`entry`的值改成一個object，裡面的key值就會是bundle出來的js的名稱；裡面的value就會是要bundle的內容，像`VENDOR_LIBS`就是通常是別人做好的tool或plugin。
 
-未完待續
+`output`的值，在`filename`那邊就用`[name]`來表示，要output出來的js名稱就依照entry那邊的key值來決定。
+
+再跑一次`npm run build`雖然成功地變成兩個檔案，但是更大了！！？
+
+原因：在index.js裡面，也有import vendor的js，所以vendor js是被bundle了兩次！
+
+這時候要使用webpack的plugin: `CommonsChunkPlugin`，它會判斷哪些是重複到用的js，並告訴webpack這些js就只出現在name那個js裏就好。
+
+```
+webpack.optimize.CommonsChunkPlugin({name: 'vendor'})
+```
+
+上面就是把index.js裡面有重複到vendor的部分去掉。神奇～
+
+
+### Html Webpack Plugin
+
+每當我們更新js的bundle方式時，或是換bundle的名字時，因為產生出來的js名稱改變過了，所以正常來說我們就要跑去html檔案裡面，手動更新`<script>`的src等等。但是...又有一個神奇的plugin：[Html Webpack Plugin](https://github.com/jantimon/html-webpack-plugin)，只要在webpack.config裡面加上
+
+```
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+...
+...
+
+plugins: [
+	new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+]
+```
+在`template: 'src/index.html'`這邊表示的是，請自動將bundle好的js加到template這裡。
+
+從此以後，就不用手動更新了！它會自動幫你在html裡面插入bundle好的js file。Amazing again~
+
+
+
+為了更精準的判斷js是否有更動過，需要再跟server拿一次，可以在webpack.config裡面，將output的部分再做一點修改，也就是在[name]的後面再加上`.[chunkhash]`，這樣的話，只要其中的js有做過修改，webpack就會給這個js後面帶一串不同的數字，讓browser知道要再去拿新的檔案。
+
+```
+output: {
+	path: path.join(__dirname, 'dist'),
+	filename: '[name].[chunkhash].js'
+}
+```
+這時候還有一個地方要調整，假設我們的bundle.js有了修改，vendor並沒有修改，但webpack在bundle的時候，會認為vendor也被修改過(跟`CommonsChunkPlugin`有關)。所以要修改一下plugins的部分，把`CommonsChunkPlugin`的`name`改成`names`，裡面放的是一個array：
+
+```
+plugins: [
+	new webpack.optimize.CommonsChunkPlugin({
+		names: ['vendor', 'manifest']
+	}),
+	new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
+]
+```
+這樣做之後，就會產生另一個js：manifest，好像是可以幫助判斷`vendor`到底有沒有改變的（不大懂）。
+
+
+加了chunkhash之後，因為每次build之後，只要js有修改，檔名都會不一樣，dist資料夾裡面的js不會被覆寫，會一直增加，這時候可以使用`rimraf`這個plugin，
+
+package.json
+
+scripts
+	clean: rimraf dist
+	build: npm run clean && webpack
+
+
 
 
 ### webpack dev server
 
+當你修改專案中的檔案時，他就會自動refresh。但是如果修改的是 webpack.config ，就必須要停掉server重啟。
+
+run webpack-dev-server的時候，webpack會run但是並沒有儲存任何檔案，講師說他是存在memory裡面（!?）。
+
+因此如果我們要弄一個portable的版本（包括index.html, css files, js files），就必須要跑webpack才行。也就是說，webpack-dev-server是給development用的，而不是production。
+
+
+### code splitting with React-Router
+
+接下來要利用React-Router來讓網頁一開始進入首頁的時候，只load首頁需要的js，等使用者去到下一頁，才去load下一頁需要的js。
+
+原本的 React-Router是這樣：
+
+```
+import Home from './components/Home';
+import ArtistMain from './components/artists/ArtistMain';
+import ArtistDetail from './components/artists/ArtistDetail';
+import ArtistCreate from './components/artists/ArtistCreate';
+import ArtistEdit from './components/artists/ArtistEdit';
+
+<Router history={hashHistory}>
+	<Route path="/" component={Home}>
+	<IndexRoute component={ArtistMain} />
+	<Route path="artists/new" component={ArtistCreate} />
+	<Route path="artists/:id" component={ArtistDetail} />
+	<Route path="artists/:id/edit" component={ArtistEdit} />
+	</Route>
+</Router>
+```
+
+把它改成這樣
+
+```
+import Home from './components/Home';
+import ArtistMain from './components/artists/ArtistMain';
+
+const componentRoutes = {
+  component: Home,
+  path: '/',
+  indexRoute: { component: ArtistMain },
+  childRoutes: [
+    { 
+      path: 'artists/new',
+      getComponent(location, cb) {
+        System.import('./components/artists/ArtistCreate').then(module => cb(null, module.default));
+      }
+    },
+    { 
+      path: 'artists/:id',
+      getComponent(location, cb) {
+        System.import('./components/artists/ArtistDetail').then(module => cb(null, module.default));
+      }
+    },
+    { 
+      path: 'artists/:id/edit',
+      getComponent(location, cb) {
+        System.import('./components/artists/ArtistEdit').then(module => cb(null, module.default));
+      }
+    }
+  ]
+};
+
+const Routes = () => {
+  return (
+    <Router history={hashHistory} routes = {componentRoutes} />
+  );
+};
+```
+
+未完待續
 
 ## 以下是自己要做的 待續
 
-### sass
+### sass & post-css
 
 ### html template
 [HtmlWebpackPlugin](https://webpack.js.org/guides/output-management/#setting-up-htmlwebpackplugin)
