@@ -378,16 +378,57 @@ const Routes = () => {
 };
 ```
 
+### sass
+
+因為我要用sass，所以是一定要裝sass轉css的東西的。google一下是看到[sass-loader](https://github.com/webpack-contrib/sass-loader)，本人是過的用法是這樣：
+```
+module: {
+	rules: [
+		...
+		{
+			test: /\.css$/,
+			use: [
+				{loader: 'style-loader'},
+				{loader: 'css-loader', options: {modules: true}}
+			]
+		},
+		{
+			test: /\.scss$/,
+			exclude: /node_modules/,
+			use: extractSass.extract({
+				use: [{
+					loader: 'css-loader'
+				}, {
+					loader: 'sass-loader'
+				}],
+				fallback: 'style-loader'
+			})
+		},
+		...
+```
+
+### post css
+
 未完待續
 
-## 以下是自己要做的 待續
-
-### sass & post-css
-
 ### html template
-[HtmlWebpackPlugin](https://webpack.js.org/guides/output-management/#setting-up-htmlwebpackplugin)
 
+本來是想要找看看有沒有像gulp 的file include這種plugin的東西，讓我切版的時候，共用的部分就引用同一隻檔案，這樣修改的話只要修改一個地方就好。但目前研究出來的方式是用已經裝過的[HtmlWebpackPlugin](https://webpack.js.org/guides/output-management/#setting-up-htmlwebpackplugin)，分成多個檔案在plugins的地方去做，像這樣：
 
+```
+	,plugins: [
+		extractSass,
+		new HtmlWebpackPlugin({
+			template: 'src/index.html'
+		}),
+		new HtmlWebpackPlugin({
+			// inject: false,
+			template: 'src/pdlist.html',
+			filename: 'pdlist.html'
+		})
+	]
+```
+是不是我瞭解的還不夠多呢？
 
 
 
