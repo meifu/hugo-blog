@@ -93,6 +93,16 @@ module: {
 
 css-loader: teach webpack how to import and parse css files（讓webpack打開css然後讀裡面的內容，但還沒做任何事）
 
+後記：看到另一個教學提到 css-loader 預設會將css裡面的 `url` 當作是要import一個module，所以如果要用`background: url(..)`這種就會發生問題。因此通常要在設定中加上`url: false`，範例如下：
+`
+use: ['style-loader', {
+	loader: 'css-loader',
+	options: {
+		url: false
+	}
+}]
+`
+
 style-loader: takes css import and adds them to the HTML document（告訴webpack要把css放在哪，怎麼用）
 
 (murmur: webpack真的很神奇誒)
